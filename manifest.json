@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Gemlixity",
+    "version": "1.0",
+    "description": "Streamlines the intelligence gathering interface with an integrated prompt history and premium UI.",
+    "permissions": [],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://gemini.google.com/*"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}
