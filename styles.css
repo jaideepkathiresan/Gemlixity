@@ -18,9 +18,9 @@
 .gemini-prompt-sidebar-wrapper {
     position: fixed;
     top: 80px;
-    left: calc(48vw + 420px + 80px);
+    left: calc(46vw + 425px + 80px);
     /* Position dynamically alongside the main chat column */
-    width: 260px;
+    width: 280px;
     height: calc(100vh - 200px);
     z-index: 2147483647;
     transition: opacity 0.3s ease, transform 0.3s ease;
