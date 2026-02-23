@@ -39,6 +39,7 @@
         const item = document.createElement('div');
         item.className = 'gemini-prompt-item';
         item.dataset.text = text;
+        item._lastTargetNode = element;
 
         item.textContent = text.length > 150 ? text.substring(0, 150) + '...' : text;
         item.title = text;
@@ -50,8 +51,11 @@
             item.classList.add('active');
             activeItem = item;
 
-            let targetElement = element;
-            if (!targetElement.isConnected) {
+            let targetElement = item._lastTargetNode;
+            let rect = targetElement ? targetElement.getBoundingClientRect() : null;
+
+            // If element is gone or hidden/zero-sized (common in current sessions), do a fresh lookup
+            if (!targetElement || !targetElement.isConnected || (rect && rect.width === 0 && rect.height === 0)) {
                 const selectors = ['user-query', '[data-test-id="user-query"]', '[data-message-author-role="user"]', '.user-query'];
                 let currentNodes = Array.from(document.querySelectorAll(selectors.join(', ')));
                 if (currentNodes.length === 0) {
@@ -65,6 +69,7 @@
                     nText = nText.replace(/^You said\s*/i, '').trim();
                     if (nText === text) {
                         targetElement = n;
+                        item._lastTargetNode = n;
                         break;
                     }
                 }
@@ -198,6 +203,7 @@
                 item.el = createPromptElement(item.text, item.node);
             } else {
                 item.el = Array.from(promptList.children).find(el => el.dataset.text === item.text);
+                if (item.el) item.el._lastTargetNode = item.node;
             }
         });
 
