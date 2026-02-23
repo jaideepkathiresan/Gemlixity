@@ -1,0 +1,293 @@
+/* Sidebar Layout */
+#gemini-prompt-sidebar {
+    height: 100%;
+    background-color: transparent;
+    /* Transparent background for a sleek look */
+    color: #a1a1aa;
+    /* Subtle text color */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border-left: none;
+    /* Hide border */
+    overflow-y: auto;
+    width: 100%;
+}
+
+.gemini-prompt-sidebar-wrapper {
+    position: fixed;
+    top: 80px;
+    left: calc(48vw + 420px + 80px);
+    /* Position dynamically alongside the main chat column */
+    width: 260px;
+    height: calc(100vh - 200px);
+    z-index: 2147483647;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+#gemini-prompt-sidebar h2 {
+    font-size: 13px;
+    margin: 10px 0 15px 0;
+    color: #71717a;
+    /* Dimmed heading color */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#gemini-prompt-sidebar h2::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 14px;
+    background-color: #3b82f6;
+    /* Title accent indicator */
+    border-radius: 2px;
+}
+
+#gemini-prompt-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Custom Scrollbar */
+#gemini-prompt-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#gemini-prompt-sidebar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
+
+#gemini-prompt-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gemini-prompt-item {
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.5;
+    transition: background-color 0.2s, color 0.2s;
+    word-break: break-word;
+    color: #a1a1aa;
+    background-color: transparent;
+    padding: 6px 12px;
+    margin-bottom: 2px;
+    border-radius: 6px;
+    border-left: none;
+}
+
+.gemini-prompt-item:hover,
+.gemini-prompt-item.active {
+    background-color: #27272a;
+    /* Hover state background */
+    color: #f4f4f5;
+}
+
+
+/* Apply accent color to bold text in model responses */
+model-response b,
+model-response strong,
+[data-message-author-role="model"] b,
+[data-message-author-role="model"] strong,
+model-chat-response b,
+model-chat-response strong,
+.markdown-content b,
+.markdown-content strong,
+.model-response-text b,
+.model-response-text strong {
+    color: #72aefd !important;
+}
+
+/* Enforce sans-serif font for consistent readability */
+model-response,
+[data-message-author-role="model"],
+model-chat-response,
+.markdown-content,
+.model-response-text {
+    font-family: sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+}
+
+/* --- Slim Chat Input Layout --- */
+
+/* 1. Remove background gradients */
+input-container,
+.input-gradient,
+.bottom-container,
+[data-test-id="bottom-container"],
+.chat-window {
+    background: transparent !important;
+    background-image: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    padding-bottom: 8px !important;
+}
+
+input-container::before,
+input-container::after,
+.input-gradient::before,
+.input-gradient::after {
+    display: none !important;
+    background: transparent !important;
+    background-image: none !important;
+}
+
+/* 2. Style the outer chat container */
+fieldset.input-area-container,
+[data-test-id="chat-input-container"] {
+    background-color: #202222 !important;
+    border-radius: 20px !important;
+    border: 1px solid #333538 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    max-width: 768px !important;
+    margin: 0 auto !important;
+    margin-bottom: 24px !important;
+    padding: 8px 12px !important;
+    min-height: unset !important;
+    height: auto !important;
+    overflow: hidden !important;
+}
+
+/* 3. Reset nested wrappers to prevent dimension compounding */
+input-area-v2,
+.input-area,
+.text-input-field,
+.text-input-field_textarea-wrapper,
+.text-input-field-main-area,
+.text-input-field_textarea-inner,
+.height-expanded-past-single-line,
+rich-textarea,
+rich-textarea>div {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-height: unset !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 4. Format the primary text input area */
+textarea,
+.ql-editor,
+[contenteditable="true"],
+[data-test-id="chat-input"] {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 15px !important;
+    color: #e3e3e3 !important;
+    background: transparent !important;
+    padding: 4px 6px !important;
+    /* Minimal horizontal padding */
+    min-height: 1.5em !important;
+    height: auto !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+
+/* Center conversational flow */
+.conversation-container,
+.response-container {
+    max-width: 768px !important;
+    margin: 0 auto !important;
+}
+
+/* Apply a dark, minimal base theme */
+body,
+main,
+app-root,
+.app-container,
+.page-container,
+[data-test-id="conversation-container"],
+.app-root,
+.main-container {
+    background-color: #171615 !important;
+    color: #e3e3e3 !important;
+}
+
+/* Hide UI logo */
+.logo,
+a[href="/"],
+[data-test-id="gemini-logo"],
+.header .logo,
+navbar .logo {
+    display: none !important;
+}
+
+/* Hide hallucination and terms disclaimers */
+chat-disclaimer,
+[class*="disclaimer"],
+[data-test-id*="disclaimer"],
+.base-disclaimer,
+.mat-caption,
+.bottom-message,
+.legal-notice,
+.footer-text,
+.info-text,
+.message-disclaimer,
+.disclaimer,
+.disclaimer-text,
+.disclaimer-container,
+.bottom-container .text-caption,
+.bottom-container .caption,
+.bottom-container>div:not(.input-container):not(chat-input):not(.mdc-elevation--z2),
+.footer-disclaimer,
+.legal-text {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    pointer-events: none !important;
+}
+
+/* --- Scroll To Bottom Floating Button --- */
+#gemini-scroll-to-bottom-btn {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #27272a;
+    border: 1px solid #333538;
+    color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 2147483647;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+}
+
+#gemini-scroll-to-bottom-btn:hover {
+    background-color: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+}
+
+#gemini-scroll-to-bottom-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+#gemini-scroll-to-bottom-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
