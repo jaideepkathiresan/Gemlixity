@@ -1,6 +1,6 @@
 # Gemlixity
 
-Gemlixity is a lightweight browser extension designed to enhance the Google Gemini interface. It provides a minimalist, premium workspace inspired by modern AI chat interfaces, featuring a persistent prompt history sidebar and intelligent navigation tools.
+Gemlixity is a lightweight browser extension designed to enhance the Google Gemini interface. It provides a minimalist, custom workspace inspired by modern AI chat interfaces, featuring a persistent prompt history sidebar and intelligent navigation tools.
 
 ## Key Features
 
